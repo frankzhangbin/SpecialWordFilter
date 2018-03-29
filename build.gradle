@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets.main.compileClasspath += configurations.compile
+
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+
+    archiveName = 'specialwordfilter.jar'
+}
+
+dependencies {
+
+}
